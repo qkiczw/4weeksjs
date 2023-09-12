@@ -8,7 +8,21 @@
   </head>
   <body>
     <div class="app-container">
-      <input type="range" class="input-range" value="24" min="1" max="100" />
+      <label for="font-selector">Choose font:</label>
+      <select name="select" id="font-selector" class="font-selector">
+        <option value="Arial">Arial</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Courgette">Courgette</option>
+      </select>
+      <label for="range-selector">Font size:</label>
+      <input
+        type="range"
+        id="range-selector"
+        class="input-range"
+        value="24"
+        min="1"
+        max="100"
+      />
       <p class="sample-text">Sample Text</p>
     </div>
     <script src="script.js"></script>

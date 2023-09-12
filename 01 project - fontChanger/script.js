@@ -1,4 +1,5 @@
 const inputRange = document.querySelector('.input-range');
+const fontSelector = document.querySelector('.font-selector');
 const sampleText = document.querySelector('.sample-text');
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -7,7 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 inputRange.addEventListener('input', function () {
-  // this => this is bing to the input in this case
+  // this => this is bind to the input in this case
   const range = this.value;
   sampleText.style.fontSize = `${range}px`;
+});
+
+fontSelector.addEventListener('change', () => {
+  // this => this is bind to window in this case
+  const fontFamily = fontSelector.value;
+  sampleText.style.fontFamily = `${fontFamily}`;
 });
