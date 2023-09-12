@@ -15,3 +15,22 @@
   align-items: center;
   gap: 25px;
 }
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.btn {
+  width: 25px;
+  height: 25px;
+}
+.font-bold {
+  font-weight: bold;
+}
+.font-italic {
+  font-style: italic;
+}
+.font-underline {
+  text-decoration: underline;
+}
