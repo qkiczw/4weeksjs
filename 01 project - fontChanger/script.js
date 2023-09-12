@@ -3,6 +3,7 @@ const fontSelector = document.querySelector('.font-selector');
 const btnBold = document.querySelector('.text-bold');
 const btnItalic = document.querySelector('.text-italic');
 const btnUnderline = document.querySelector('.text-underline');
+const inputColor = document.querySelector('.input-color');
 const sampleText = document.querySelector('.sample-text');
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -46,4 +47,9 @@ btnUnderline.addEventListener('click', function () {
   } else {
     sampleText.classList.remove('font-underline');
   }
+});
+
+inputColor.addEventListener('change', function () {
+  const color = this.value;
+  sampleText.style.color = `${color}`;
 });
