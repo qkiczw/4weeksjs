@@ -26,7 +26,9 @@ h1 {
 .image {
   width: 50%;
 }
-
+.input-container {
+  margin: 25px 0;
+}
 .bars {
   display: flex;
   flex-direction: column;

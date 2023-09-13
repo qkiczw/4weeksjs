@@ -5,6 +5,8 @@ const contrastBar = document.querySelector('.contrast-bar');
 const saturationBar = document.querySelector('.saturation-bar');
 const hueBar = document.querySelector('.hue-bar');
 const blurBar = document.querySelector('.blur-bar');
+const getImageUrltn = document.querySelector('.get-image-url-btn');
+const imageUrlInput = document.querySelector('.image-url-input');
 
 const bars = [brightnessBar, contrastBar, saturationBar, hueBar, blurBar];
 
@@ -16,4 +18,9 @@ bars.forEach((bar) => {
     root.style.setProperty('--hue', `${hueBar.value}deg`);
     root.style.setProperty('--blur', `${blurBar.value}px`);
   });
+});
+
+getImageUrltn.addEventListener('click', function () {
+  const imageUrl = imageUrlInput.value;
+  sampleImage.src = imageUrl;
 });
