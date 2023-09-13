@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS image cahanger</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>CSS filter changer</h1>
+    <div class="app-container">
+      <div class="bars">
+        <label
+          >Brightness:
+          <input type="range" class="bar" min="0" max="100" value="100" />
+        </label>
+        <label
+          >Contrast:
+          <input type="range" class="bar" min="0" max="100" value="100" />
+        </label>
+        <label
+          >Saturation:
+          <input type="range" class="bar" min="0" max="100" value="100" />
+        </label>
+        <label
+          >Blur:
+          <input type="range" class="bar" min="0" max="100" value="100" />
+        </label>
+      </div>
+      <div class="image">
+        <img
+          src="https://images.pexels.com/photos/2629372/pexels-photo-2629372.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          alt=""
+        />
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
