@@ -1,5 +1,9 @@
 :root {
   --brightness: 100%;
+  --contrast: 100%;
+  --saturation: 100%;
+  --hue: 0deg;
+  --blur: 0px;
 }
 
 * {
@@ -7,7 +11,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+h1 {
+  text-align: center;
+  margin: 50px;
+}
 .app-container {
   width: 80%;
   margin: 0 auto;
@@ -30,5 +37,6 @@
 }
 .sample-image {
   max-width: 400px;
-  filter: brightness(var(--brightness));
+  filter: brightness(var(--brightness)) contrast(var(--contrast))
+    saturate(var(--saturation)) hue-rotate(var(--hue)) blur(var(--blur));
 }
