@@ -18,7 +18,7 @@ const saveNote = function () {
 const createNote = function (key, note) {
   const liElement = document.createElement('li');
   liElement.classList.add('note');
-  const paragraphElement = document.createElement('p');
+  const spanElement = document.createElement('span');
 
   const delBtn = document.createElement('button');
   delBtn.classList.add('delete-note-btn');
@@ -28,8 +28,8 @@ const createNote = function (key, note) {
   });
 
   liElement.id = key;
-  paragraphElement.textContent = note;
-  liElement.appendChild(paragraphElement);
+  spanElement.textContent = note;
+  liElement.appendChild(spanElement);
   liElement.appendChild(delBtn);
 
   notesList.appendChild(liElement);
