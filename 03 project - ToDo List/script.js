@@ -22,6 +22,9 @@ const createNote = function (key, note) {
   const delBtn = document.createElement('button');
   delBtn.classList.add('delete-note-btn');
   delBtn.textContent = 'Delete';
+  delBtn.addEventListener('click', function () {
+    deleteNote(key);
+  });
 
   liElement.id = key;
   paragraphElement.textContent = note;
@@ -31,10 +34,14 @@ const createNote = function (key, note) {
   notesList.appendChild(liElement);
 };
 
+const deleteNote = function (noteID) {
+  document.querySelector(`#${noteID}`).remove();
+  localStorage.removeItem(noteID);
+};
+
 AddNoteBtn.addEventListener('click', saveNote);
 
 function init() {
-  console.log(Object.keys(localStorage));
   Object.keys(localStorage).forEach((key) => {
     createNote(key, localStorage.getItem(key));
   });
