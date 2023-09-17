@@ -17,6 +17,7 @@ const saveNote = function () {
 
 const createNote = function (key, note) {
   const liElement = document.createElement('li');
+  liElement.classList.add('note');
   const paragraphElement = document.createElement('p');
 
   const delBtn = document.createElement('button');
