@@ -7,11 +7,7 @@ console.log(`Hello World`);
 const AddNoteBtn = document.querySelector('.add-note-btn');
 const notesList = document.querySelector('.notes-list');
 
-function init() {
-  localStorage.keys();
-}
-
-const saveNote = () => {
+const saveNote = function () {
   const noteID = `id${Date.now()}`;
   const noteInput = document.querySelector('.note-input').value;
   localStorage.setItem(noteID, noteInput);
@@ -19,7 +15,7 @@ const saveNote = () => {
   createNote(noteID, noteInput);
 };
 
-const createNote = (key, note) => {
+const createNote = function (key, note) {
   const liElement = document.createElement('li');
   const paragraphElement = document.createElement('p');
 
@@ -36,3 +32,11 @@ const createNote = (key, note) => {
 };
 
 AddNoteBtn.addEventListener('click', saveNote);
+
+function init() {
+  console.log(Object.keys(localStorage));
+  Object.keys(localStorage).forEach((key) => {
+    createNote(key, localStorage.getItem(key));
+  });
+}
+init();
