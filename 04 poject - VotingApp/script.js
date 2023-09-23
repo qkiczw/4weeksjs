@@ -19,17 +19,34 @@ const votesCast = new Map([
   ['Opcja-03', 0],
 ]);
 
+const votedUsers = new Set();
+
 const displayResults = () => {
   for (const [option, vote] of votesCast) {
-    console.log(option, vote);
+    // console.log(option, vote);
 
     resultsList.innerHTML += `<li>${option} - głosów oddanych: ${vote}</li>`;
   }
 };
 
+const addVote = () => {
+  const user = userName.value;
+  const id = userID.value;
+  const voteOption = options.value;
+
+  if (!votedUsers.has(user)) {
+    votedUsers.add(user);
+    votesCast.set(voteOption, votesCast.get(voteOption) + 1);
+  } else {
+    alert(`Użytkownik: ${user} oddał już głos.`);
+  }
+};
+
 votingForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  console.log(options.value);
+  //   console.log(options.value);
+
+  addVote();
 
   resultsList.innerHTML = ``; // clear votes list
   displayResults();
