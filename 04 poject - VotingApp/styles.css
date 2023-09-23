@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  width: 90%;
+  height: 90dvh;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 25px auto;
+  background-color: chocolate;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  border: 3px solid rgb(163, 65, 0);
+  border-radius: 10px;
+}
+h1 {
+  text-transform: uppercase;
+  /* text-decoration: underline; */
+}
+h2 {
+  margin-top: 50px;
+}
+.voting-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 17px;
+  margin-top: 20px;
+}
+
+.voting-btn {
+  padding: 15px 20px;
+  background-color: gold;
+  border: none;
+  border-radius: 10px;
+}
+.voting-btn:hover {
+  background-color: rgb(230, 164, 22);
+  cursor: pointer;
+}
