@@ -13,24 +13,34 @@
       <form action="" class="voting-form">
         <label>
           Nazwa użytkownika
-          <input type="text" placeholder="Wpisz nazwę użytkownika" />
+          <input
+            type="text"
+            class="user-name"
+            placeholder="Wpisz nazwę użytkownika"
+          />
         </label>
         <label>
           Id użytkownika
-          <input type="text" placeholder="Wpisz swój numer ID" />
+          <input
+            type="text"
+            class="user-id"
+            placeholder="Wpisz swój numer ID"
+          />
         </label>
         <label>
           Wybierz opcje
-          <select>
+          <select class="options-input">
             <option value="Opcja-01">Opcja 01</option>
             <option value="Opcja-02">Opcja 02</option>
             <option value="Opcja-03">Opcja 03</option>
           </select>
         </label>
-        <button class="voting-btn">Głosuj</button>
+        <button type="submit" class="voting-btn">Głosuj</button>
       </form>
       <h2>Wyniki głosowania</h2>
-      <div class="voting-results"></div>
+      <div class="voting-results">
+        <ul class="voting-results"></ul>
+      </div>
     </div>
 
     <script src="./script.js"></script>
