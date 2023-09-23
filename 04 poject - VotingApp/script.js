@@ -6,11 +6,11 @@ const options = document.querySelector('.options-input');
 const resultsList = document.querySelector('.voting-results');
 
 const voters = new Map([
-  ['Łukasz', ['1234']],
-  ['Maciej', ['4321']],
-  ['Martyna', ['4321']],
-  ['Milan', ['1111']],
-  ['Sara', ['0001']],
+  ['Łukasz', '1234'],
+  ['Maciej', '4321'],
+  ['Martyna', '4321'],
+  ['Milan', '1111'],
+  ['Sara', '0001'],
 ]);
 
 const votesCast = new Map([
@@ -23,9 +23,7 @@ const votedUsers = new Set();
 
 const displayResults = () => {
   for (const [option, vote] of votesCast) {
-    // console.log(option, vote);
-
-    resultsList.innerHTML += `<li>${option} - głosów oddanych: ${vote}</li>`;
+    resultsList.innerHTML += `<li>${option} - głosy: ${vote}</li>`;
   }
 };
 
@@ -34,17 +32,20 @@ const addVote = () => {
   const id = userID.value;
   const voteOption = options.value;
 
-  if (!votedUsers.has(user)) {
-    votedUsers.add(user);
-    votesCast.set(voteOption, votesCast.get(voteOption) + 1);
+  if (voters.get(user) === id) {
+    if (!votedUsers.has(user)) {
+      votedUsers.add(user);
+      votesCast.set(voteOption, votesCast.get(voteOption) + 1);
+    } else {
+      alert(`Użytkownik: ${user} oddał już głos.`);
+    }
   } else {
-    alert(`Użytkownik: ${user} oddał już głos.`);
+    alert('nieprawidłowe dane');
   }
 };
 
 votingForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  //   console.log(options.value);
 
   addVote();
 
