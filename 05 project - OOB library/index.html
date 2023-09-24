@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OOB Library</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <h1>Moja Biblioteka</h1>
+      <div class="add-book-container">
+        <h2>Dodaj Książkę</h2>
+        <label>
+          Tytuł:
+          <input
+            type="text"
+            placeholder="Wpisz tytuł książki"
+            class="add-book-title-input"
+          />
+          Tytuł:
+          <input
+            type="text"
+            placeholder="Wpisz atora książki"
+            class="add-book-author-input"
+          />
+          Tytuł:
+          <input
+            type="text"
+            placeholder="Wpisz rok wydania książki"
+            class="add-book-year-input"
+          />
+        </label>
+        <button class="add-book-btn">Dodaj książkę</button>
+      </div>
+      <div class="search-book-container">
+        <h2>Szukaj książki:</h2>
+        <label>
+          Książka której szukasz to:
+          <input type="text" placeholder="Wpisz tytuł książki" />
+          <button class="search-book-btn">Szukaj</button>
+        </label>
+      </div>
+      <div class="searched-book-container">
+        <h2>Rezultaty:</h2>
+        <div class="results"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
