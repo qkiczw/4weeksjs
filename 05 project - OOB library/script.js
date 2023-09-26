@@ -1,5 +1,3 @@
-const AddBookBtn = document.querySelector('.add-book-btn');
-
 class Book {
   #title;
   #author;
@@ -12,7 +10,12 @@ class Book {
   }
 
   showDetails() {
-    return `${this.#title}, ${this.#author}, ${this.#year}`;
+    return `
+    <h3>Książka której szukasz to:</h3>
+    <p>Tytuł: ${this.#title} </p>
+    <p>Autor: ${this.#author}</p>
+    <p>Data wydania: ${this.#year}</p>
+    `;
   }
 }
 
@@ -24,30 +27,44 @@ class Library {
   }
 
   init() {
-    console.log('run with init()');
+    document.querySelector('.add-book-btn').addEventListener('click', () => {
+      this.addBook();
+    });
+
+    document.querySelector('.search-book-btn').addEventListener('click', () => {
+      this.searchBook();
+    });
   }
 
   addBook() {
-    const title = document.querySelector('.add-book-title-input');
-    const author = document.querySelector('.add-book-author-input');
-    const year = document.querySelector('.add-book-year-input');
+    const title = document.querySelector('.add-book-title-input').value;
+    const author = document.querySelector('.add-book-author-input').value;
+    const year = document.querySelector('.add-book-year-input').value;
 
     const book = new Book(title, author, year);
-    this.#bookCollection.set([title, book]);
+    this.#bookCollection.set(title, book);
 
-    document.querySelector('.results').innerHTML = `Ksiażka dodana`;
     console.log(this.#bookCollection);
+  }
+
+  searchBook() {
+    const searchedTitle = document.querySelector('.searched-book-input').value;
+    const book = this.#bookCollection.get(searchedTitle);
+    const resultsDiv = document.querySelector('.results');
+
+    if (this.#bookCollection.has(searchedTitle)) {
+      resultsDiv.innerHTML = book.showDetails();
+    } else {
+      resultsDiv.innerHTML = `<h3>Nie mamy takiej książki w zbiorze!</h3>
+      <p>Poszukaj innej ksiązki!</p>
+      `;
+    }
   }
 }
 
 const biblioteka = new Library();
 
 biblioteka.init();
-
-AddBookBtn.addEventListener('click', function (e) {
-  e.preventDefault();
-  biblioteka.addBook();
-});
 
 // const book = new Book('książka', 'me', '2022');
 // document.querySelector('.results').innerHTML = book.showDetails();
