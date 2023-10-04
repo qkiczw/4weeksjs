@@ -12,23 +12,23 @@
       <form type="submit">
         <label>
           Płeć
-          <select>
+          <select class="gender">
             <option value="female">Kobieta</option>
             <option value="male">Mężczyzna</option>
           </select>
         </label>
         <label>
           Rasa
-          <select>
+          <select class="ethnicity">
             <option value="european">Europejczyk</option>
-            <option value="afroamerican">Afroamerykanin</option>
-            <option value="mexian">Meksykanin</option>
-            <option value="asian">Azjata</option>
+            <option value="african">Afroamerykanin</option>
+            <option value="latin_american">Meksykanin</option>
+            <option value="east_asian">Azjata</option>
           </select>
         </label>
         <label>
           Wiek (od 0 do 70)
-          <input type="text" placeholder="Podaj wiek w latach" />
+          <input type="text" class="age" value="18" />
         </label>
         <button type="submit" class="generate-face-btn">Generuj twarz</button>
       </form>
