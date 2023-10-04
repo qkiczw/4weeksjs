@@ -1,6 +1,8 @@
+
+
 const  generateFace = async () => {
     const resultContainer = document.querySelector('.result');
-    resultContainer.innerHTML = "";
+    resultContainer.innerHTML = '';
 
     const gender = document.querySelector('.gender').value;
     const ethnicity = document.querySelector('.ethnicity').value;
@@ -12,7 +14,7 @@ const  generateFace = async () => {
         method: 'GET',
         headers: {
             //Use your api key!!!
-            'X-RapidAPI-Key': 'd13b68be67msh24d55e4953bfaeap1ba2e6jsn3e99ac8f7839',
+            'X-RapidAPI-Key': `USE HERE YOUR API KEY`,
             'X-RapidAPI-Host': 'face-studio.p.rapidapi.com'
         }
     };
@@ -20,7 +22,7 @@ const  generateFace = async () => {
     try {
         const response = await fetch(url, options);
         const result = await response.blob(); // blob returns raw data
-        const imageURL = URL.createObjectURL(result)
+        const imageURL = URL.createObjectURL(result);
         const imageDOM = document.createElement('img');
         imageDOM.src = imageURL;
         document.querySelector('.result').append(imageDOM);
@@ -28,11 +30,11 @@ const  generateFace = async () => {
     } catch (error) {
         console.error(error);
     }
-}
+};
 
 document.querySelector('.generate-face-btn').addEventListener('click', function(e) {
 e.preventDefault();
-console.log('klick dziala')
+console.log('klick dziala');
 generateFace();
-})
+});
 
