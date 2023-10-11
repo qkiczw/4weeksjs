@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Fake Face Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <h1>Fake Face Generator</h1>
+      <form type="submit">
+        <label>
+          Płeć
+          <select class="gender">
+            <option value="female">Kobieta</option>
+            <option value="male">Mężczyzna</option>
+          </select>
+        </label>
+        <label>
+          Rasa
+          <select class="ethnicity">
+            <option value="european">Europejczyk</option>
+            <option value="african">Afroamerykanin</option>
+            <option value="latin_american">Meksykanin</option>
+            <option value="east_asian">Azjata</option>
+          </select>
+        </label>
+        <label>
+          Wiek (od 0 do 70)
+          <input type="text" class="age" value="18" />
+        </label>
+        <button type="submit" class="generate-face-btn">Generuj twarz</button>
+      </form>
+      <div class="result"></div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
