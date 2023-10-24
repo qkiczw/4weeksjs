@@ -52,11 +52,11 @@ class Quiz {
       this.#questionsPack[this.#currentQuestionIndes].questionTitle;
   }
   displayCurrentAnswers() {
-    this.#questionsPack[this.#currentQuestionIndes].queestionAnswers.map(
-      (answer) => {
+    this.#questionsPack[this.#currentQuestionIndes].queestionAnswers.forEach(
+      (answer, index) => {
         const answersContainer = document.querySelector('.answers__container');
         const answerElement = document.createElement('li');
-        answerElement.innerHTML = `<input type="radio">${answer}</input>`;
+        answerElement.innerHTML = `<input type="radio" value=${index}>${answer}</input>`;
         answersContainer.appendChild(answerElement);
       }
     );
