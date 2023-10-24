@@ -21,14 +21,17 @@ class Question {
     return this.#questionTitle;
   }
 
-  get queestionAnswers() {
+  get answers() {
     return this.#answers;
+  }
+  get correctAnswer() {
+    return this.#correctAnswer;
   }
 }
 
 class Quiz {
   #questionsPack;
-  #currentQuestionIndes;
+  #currentQuestionIndex;
   #score;
 
   constructor(questionsPack) {
@@ -37,29 +40,47 @@ class Quiz {
     );
 
     console.log(this.#questionsPack); //this is only to test
-    this.#currentQuestionIndes = 0;
+    this.#currentQuestionIndex = 0;
     this.#score = 0;
 
-    document
-      .querySelector('.next-question-btn')
-      .addEventListener('click', function () {
-        console.log(this.#currentQuestionIndes);
-      });
+    // const nextQuestionBtn = document.querySelector('.next-question-btn');
+    // nextQuestionBtn.addEventListener('click', this.nextQuestion);
   }
+
   displayCurrentQuestion() {
-    const questionElement = document.querySelector('.question');
+    const questionElement = document.querySelector('.question__container');
     questionElement.textContent =
-      this.#questionsPack[this.#currentQuestionIndes].questionTitle;
+      this.#questionsPack[this.#currentQuestionIndex].questionTitle;
   }
+
   displayCurrentAnswers() {
-    this.#questionsPack[this.#currentQuestionIndes].queestionAnswers.forEach(
+    this.#questionsPack[this.#currentQuestionIndex].answers.forEach(
       (answer, index) => {
         const answersContainer = document.querySelector('.answers__container');
         const answerElement = document.createElement('li');
-        answerElement.innerHTML = `<input type="radio" value=${index}>${answer}</input>`;
+        answerElement.innerHTML = `<label><input type="radio" value=${index} name="answer"></input> ${answer}</label>`;
         answersContainer.appendChild(answerElement);
       }
     );
+  }
+
+  nextQuestion() {
+    const selectedAnswer = document.querySelector(
+      'input[name="answer"]:checked'
+    );
+
+    if (selectedAnswer) {
+      if (
+        +selectedAnswer.value ===
+        this.#questionsPack[this.#currentQuestionIndex].correctAnswer
+      ) {
+        console.log('dobra odpowiedź');
+      } else {
+        console.log('zła odpowiedź!');
+      }
+    } else {
+      alert('Nie wybrałeś odpowiedzi!');
+    }
   }
 
   init() {
@@ -68,5 +89,5 @@ class Quiz {
   }
 }
 
-const FirstQuiz = new Quiz(questionsPack01);
-FirstQuiz.init();
+const quiz = new Quiz(questionsPack01);
+quiz.init();

@@ -10,10 +10,19 @@
     <div class="app-container">
       <h1>Quiz</h1>
       <hr />
-      <div class="question"></div>
-      <ul class="answers__container"></ul>
+
+      <div class="question">
+        <h2>Pytanie:</h2>
+        <p class="question__container"></p>
+      </div>
+      <div class="answers">
+        <h2>Odpowiedzi:</h2>
+        <ul class="answers__container"></ul>
+      </div>
       <div class="results"></div>
-      <button class="next-question-btn">Następne pytanie</button>
+      <button class="next-question-btn" onclick="quiz.nextQuestion()">
+        Następne pytanie
+      </button>
     </div>
     <script src="script.js"></script>
   </body>
