@@ -21,7 +21,7 @@ class Question {
     return this.#questionTitle;
   }
 
-  get queestonAnswers() {
+  get queestionAnswers() {
     return this.#answers;
   }
 }
@@ -43,21 +43,28 @@ class Quiz {
     document
       .querySelector('.next-question-btn')
       .addEventListener('click', function () {
-        alert('działam');
+        console.log(this.#currentQuestionIndes);
       });
   }
   displayCurrentQuestion() {
     const questionElement = document.querySelector('.question');
-    questionElement.innerHTML = this.#questionsPack[this.#currentQuestionIndes];
-    console.log(
-      (questionElement.innerHTML =
-        this.#questionsPack[this.#currentQuestionIndes].questionTitle)
+    questionElement.textContent =
+      this.#questionsPack[this.#currentQuestionIndes].questionTitle;
+  }
+  displayCurrentAnswers() {
+    this.#questionsPack[this.#currentQuestionIndes].queestionAnswers.map(
+      (answer) => {
+        const answersContainer = document.querySelector('.answers__container');
+        const answerElement = document.createElement('li');
+        answerElement.innerHTML = `<input type="radio">${answer}</input>`;
+        answersContainer.appendChild(answerElement);
+      }
     );
   }
-  displayCurrentAnswers() {}
 
   init() {
     this.displayCurrentQuestion();
+    this.displayCurrentAnswers();
   }
 }
 
