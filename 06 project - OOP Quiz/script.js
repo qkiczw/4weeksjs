@@ -47,16 +47,24 @@ class Quiz {
     // nextQuestionBtn.addEventListener('click', this.nextQuestion);
   }
 
+  displayScore() {
+    const scoreElement = document.querySelector('.score');
+    scoreElement.textContent = this.#score;
+  }
+
   displayCurrentQuestion() {
     const questionElement = document.querySelector('.question__container');
+    questionElement.innerHTML = '';
     questionElement.textContent =
       this.#questionsPack[this.#currentQuestionIndex].questionTitle;
   }
 
   displayCurrentAnswers() {
+    const answersContainer = document.querySelector('.answers__container');
+    answersContainer.innerHTML = '';
+
     this.#questionsPack[this.#currentQuestionIndex].answers.forEach(
       (answer, index) => {
-        const answersContainer = document.querySelector('.answers__container');
         const answerElement = document.createElement('li');
         answerElement.innerHTML = `<label><input type="radio" value=${index} name="answer"></input> ${answer}</label>`;
         answersContainer.appendChild(answerElement);
@@ -75,9 +83,14 @@ class Quiz {
         this.#questionsPack[this.#currentQuestionIndex].correctAnswer
       ) {
         console.log('dobra odpowiedź');
+        this.#score++;
       } else {
         console.log('zła odpowiedź!');
       }
+      this.#currentQuestionIndex++;
+      this.displayCurrentQuestion();
+      this.displayCurrentAnswers();
+      this.displayScore();
     } else {
       alert('Nie wybrałeś odpowiedzi!');
     }
