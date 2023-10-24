@@ -3,7 +3,7 @@ console.log('Hello World!');
 const questionsPack01 = [
   ['Ile to 2x2?', ['4', '22'], 0], //explanation [question, answers, correct answer is a index of an answers array]
   ['Czy Polska jest krajem Uni Europejskiej?', ['Nie', 'Tak'], 1], //explanation [question, answers, correct answer is a index of an answers array]
-  ['Delfin to?', ['Ryba', 'plaz', 'Ssak'], 2], //explanation [question, answers, correct answer is a index of an answers array]
+  ['Delfin to?', ['Ryba', 'płaz', 'Ssak'], 2], //explanation [question, answers, correct answer is a index of an answers array]
 ];
 
 class Question {
@@ -20,12 +20,16 @@ class Question {
   get questionTitle() {
     return this.#questionTitle;
   }
+
+  get queestonAnswers() {
+    return this.#answers;
+  }
 }
 
 class Quiz {
   #questionsPack;
   #currentQuestionIndes;
-  #score = 0;
+  #score;
 
   constructor(questionsPack) {
     this.#questionsPack = questionsPack.map(
@@ -33,7 +37,29 @@ class Quiz {
     );
 
     console.log(this.#questionsPack); //this is only to test
+    this.#currentQuestionIndes = 0;
+    this.#score = 0;
+
+    document
+      .querySelector('.next-question-btn')
+      .addEventListener('click', function () {
+        alert('działam');
+      });
+  }
+  displayCurrentQuestion() {
+    const questionElement = document.querySelector('.question');
+    questionElement.innerHTML = this.#questionsPack[this.#currentQuestionIndes];
+    console.log(
+      (questionElement.innerHTML =
+        this.#questionsPack[this.#currentQuestionIndes].questionTitle)
+    );
+  }
+  displayCurrentAnswers() {}
+
+  init() {
+    this.displayCurrentQuestion();
   }
 }
 
-new Quiz(questionsPack01);
+const FirstQuiz = new Quiz(questionsPack01);
+FirstQuiz.init();
