@@ -21,3 +21,6 @@ button {
 .answers__container {
   list-style: none;
 }
+hr {
+  margin-bottom: 50px;
+}
