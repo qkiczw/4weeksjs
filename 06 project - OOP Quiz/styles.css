@@ -8,3 +8,16 @@ button {
   margin-top: 25px;
   padding: 10px 15px;
 }
+
+.app-container {
+  margin: 50px;
+}
+
+.question__container,
+.answers__container {
+  margin: 10px 20px;
+}
+
+.answers__container {
+  list-style: none;
+}
