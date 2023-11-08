@@ -1,5 +1,3 @@
-console.log('Hello World!');
-
 const questionsPack01 = [
   ['Ile to 2x2?', ['4', '22'], 0], //explanation [question, answers, correct answer is a index of an answers array]
   ['Czy Polska jest krajem Uni Europejskiej?', ['Nie', 'Tak'], 1], //explanation [question, answers, correct answer is a index of an answers array]
@@ -38,18 +36,13 @@ class Quiz {
     this.#questionsPack = questionsPack.map(
       (question) => new Question(question[0], question[1], question[2])
     );
-
-    console.log(this.#questionsPack); //this is only to test
     this.#currentQuestionIndex = 0;
     this.#score = 0;
-
-    // const nextQuestionBtn = document.querySelector('.next-question-btn');
-    // nextQuestionBtn.addEventListener('click', this.nextQuestion);
   }
 
   displayScore() {
     const scoreElement = document.querySelector('.score');
-    scoreElement.textContent = this.#score;
+    scoreElement.textContent = `${this.#score} / ${this.#questionsPack.length}`;
   }
 
   displayQuestionAndAnswers() {
@@ -76,32 +69,28 @@ class Quiz {
       'input[name="answer"]:checked'
     );
 
-    // test code
-    if (this.#currentQuestionIndex < this.#questionsPack.length - 1) {
-      console.log(`są jeszcze pytania`);
-    } else {
-      console.log('koniec pytań!');
-      // console.log(`tablica`, this.#questionsPack);
-    }
-
     if (selectedAnswer) {
       if (
         +selectedAnswer.value ===
         this.#questionsPack[this.#currentQuestionIndex].correctAnswer
       ) {
-        console.log('dobra odpowiedź');
+        console.log('Dobra odpowiedź. Dostajesz jeden punkt');
         this.#score++;
       } else {
-        console.log('zła odpowiedź!');
+        console.log('Zła odpowiedź! Nie dostajesz punktu');
       }
       this.#currentQuestionIndex++;
-      // this.displayCurrentQuestion();
-      // this.displayCurrentAnswers();
-      this.displayQuestionAndAnswers();
-      this.displayScore();
+
+      if (this.#currentQuestionIndex < this.#questionsPack.length) {
+        this.displayQuestionAndAnswers();
+        this.displayScore();
+      } else {
+        alert(`Koniec. Twoja ilość punktów to: ${this.#score}`);
+      }
     } else {
       alert('Nie wybrałeś odpowiedzi!');
     }
+    console.log(this.#score);
   }
 
   init() {
