@@ -52,16 +52,15 @@ class Quiz {
     scoreElement.textContent = this.#score;
   }
 
-  displayCurrentQuestion() {
+  displayQuestionAndAnswers() {
     const questionElement = document.querySelector('.question__container');
+    const answersContainer = document.querySelector('.answers__container');
+
     questionElement.innerHTML = '';
+    answersContainer.innerHTML = '';
+
     questionElement.textContent =
       this.#questionsPack[this.#currentQuestionIndex].questionTitle;
-  }
-
-  displayCurrentAnswers() {
-    const answersContainer = document.querySelector('.answers__container');
-    answersContainer.innerHTML = '';
 
     this.#questionsPack[this.#currentQuestionIndex].answers.forEach(
       (answer, index) => {
@@ -77,6 +76,14 @@ class Quiz {
       'input[name="answer"]:checked'
     );
 
+    // test code
+    if (this.#currentQuestionIndex < this.#questionsPack.length - 1) {
+      console.log(`są jeszcze pytania`);
+    } else {
+      console.log('koniec pytań!');
+      // console.log(`tablica`, this.#questionsPack);
+    }
+
     if (selectedAnswer) {
       if (
         +selectedAnswer.value ===
@@ -88,8 +95,9 @@ class Quiz {
         console.log('zła odpowiedź!');
       }
       this.#currentQuestionIndex++;
-      this.displayCurrentQuestion();
-      this.displayCurrentAnswers();
+      // this.displayCurrentQuestion();
+      // this.displayCurrentAnswers();
+      this.displayQuestionAndAnswers();
       this.displayScore();
     } else {
       alert('Nie wybrałeś odpowiedzi!');
@@ -97,8 +105,7 @@ class Quiz {
   }
 
   init() {
-    this.displayCurrentQuestion();
-    this.displayCurrentAnswers();
+    this.displayQuestionAndAnswers();
   }
 }
 
