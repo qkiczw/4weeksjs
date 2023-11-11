@@ -11,13 +11,21 @@
       <div class="menu-container">
         <div class="buttons-container">
           <span class="buttons-section__title">Colors: </span>
-          <button class="btn-white">White</button>
-          <button class="btn-blue">Blue</button>
+          <button class="btn-white" onclick="app.changeColor('White')">
+            White
+          </button>
+          <button class="btn-blue" onclick="app.changeColor('Blue')">
+            Blue
+          </button>
         </div>
         <div class="buttons-container">
           <span class="buttons-section__title">Background: </span>
-          <button class="btn-white">White</button>
-          <button class="btn-blue">Black</button>
+          <button class="btn-white" onclick="app.changeColor('White')">
+            White
+          </button>
+          <button class="btn-black" onclick="app.changeColor('Black')">
+            Black
+          </button>
         </div>
       </div>
       <canvas id="canvas"></canvas>
