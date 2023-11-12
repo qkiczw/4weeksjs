@@ -11,36 +11,51 @@ class DrawingApp {
     this.canvas.height = window.innerHeight;
     this.ctx = this.canvas.getContext('2d');
 
-    this.strokeStyle = 'white'; // colour of a pen
+    this.ctx.strokeStyle = 'white'; // colour of a pen
+    this.ctx.lineWidth = 5;
+    this.ctx.lineCap = 'round';
   }
   #initEvents() {
-    // TODO:mouse methods => mouse up, down and move
-    this.canvas.addEventListener('mousedown', () => this.#starPosition());
-    this.canvas.addEventListener('mouseup', () => this.#endPosition());
+    this.canvas.addEventListener('mousedown', (e) => this.#starPosition(e));
+    this.canvas.addEventListener('mouseup', (e) => this.#endPosition(e));
+    this.canvas.addEventListener('mousemove', (e) => this.#draw(e));
 
-    // TODO: touch methods (mobile phones) => touch start, end, move
-    this.canvas.addEventListener('touchstart', () => this.#starPosition());
-    this.canvas.addEventListener('touchend', () => this.#endPosition());
+    this.canvas.addEventListener('touchstart', (e) => this.#starPosition(e));
+    this.canvas.addEventListener('touchend', (e) => this.#endPosition(e));
+    this.canvas.addEventListener('touchmove', (e) => this.#draw(e));
   }
 
   // cursor position
-  #starPosition() {
+  #starPosition(e) {
+    console.log(`drawing start`);
     this.painting = true;
-    this.#draw();
+    this.#draw(e);
   }
   #endPosition() {
+    console.log(`drawing stop`);
     this.painting = false;
+    this.ctx.beginPath();
   }
 
-  #draw() {
+  #draw(e) {
     // TODO: draw method
     if (!this.painting) return;
-    console.log('im drawing!');
+
+    // console.log(`im drawing!`);
+
+    let x = e.clientX || e.touches[0].clientX;
+    let y = e.clientY || e.touches[0].clientY;
+
+    console.log(e);
+
+    this.ctx.lineTo(x, y);
+    this.ctx.stroke();
+    this.ctx.moveTo(x, y);
   }
 
   changeColor(color) {
     console.log(color);
-    this.ctx.strokeStyle(color);
+    this.ctx.strokeStyle = color;
   }
 }
 
