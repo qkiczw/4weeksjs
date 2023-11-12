@@ -15,7 +15,12 @@ class DrawingApp {
   }
   #initEvents() {
     // TODO:mouse methods => mouse up, down and move
+    this.canvas.addEventListener('mousedown', () => this.#starPosition());
+    this.canvas.addEventListener('mouseup', () => this.#endPosition());
+
     // TODO: touch methods (mobile phones) => touch start, end, move
+    this.canvas.addEventListener('touchstart', () => this.#starPosition());
+    this.canvas.addEventListener('touchend', () => this.#endPosition());
   }
 
   // cursor position
@@ -24,11 +29,13 @@ class DrawingApp {
     this.#draw();
   }
   #endPosition() {
-    this.painting.false;
+    this.painting = false;
   }
 
   #draw() {
     // TODO: draw method
+    if (!this.painting) return;
+    console.log('im drawing!');
   }
 
   changeColor(color) {
