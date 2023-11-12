@@ -57,6 +57,12 @@ class DrawingApp {
     console.log(color);
     this.ctx.strokeStyle = color;
   }
+  changeBgColor(color) {
+    console.log(`bg`, color);
+    const background = document.querySelector('.app-container');
+    background.style.backgroundColor = color;
+    // document.querySelector('.app-container').style.backgroundColor = color;
+  }
 }
 
 const app = new DrawingApp();
