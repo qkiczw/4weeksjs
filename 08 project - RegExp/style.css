@@ -1,0 +1,18 @@
+.form {
+  max-width: 500px;
+  margin: 50px;
+  padding: 25px;
+  background-color: rgb(188, 188, 188);
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.form__section {
+  margin-bottom: 20px;
+}
+.form__btn {
+  border: none;
+  border-radius: 10px;
+  background-color: lightgreen;
+  padding: 10px 15px;
+}

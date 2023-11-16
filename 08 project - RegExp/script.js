@@ -1,17 +1,18 @@
-function checkInput() {
-  let inputVal = document.querySelector('.input').value;
-  let option = document.querySelector('.select').value;
+const phoneEl = document.querySelector('#phone');
+const emailEl = document.querySelector('#email');
+const passwordEl = document.querySelector('#password');
+const formBtn = document.querySelector('.form__btn');
+const form = document.querySelector('form');
 
-  console.log(inputVal);
-  console.log(option, typeof option);
+const validateForm = (e) => {
+  e.preventDefault();
 
-  const regexp = new RegExp(option);
+  let phoneVal = phoneEl.value;
+  let emailVal = emailEl.value;
+  let passwordVal = passwordEl.value;
 
-  if (regexp.test(inputVal)) {
-    alert('Jest OK!!!');
-  } else {
-    alert('nie jest OK :/');
-  }
-}
+  console.log(`VALS: `, phoneVal, emailVal, passwordVal);
+};
 
-document.querySelector('.btn').addEventListener('click', checkInput);
+// formBtn.addEventListener('submit', validateForm);
+form.addEventListener('submit', validateForm);
