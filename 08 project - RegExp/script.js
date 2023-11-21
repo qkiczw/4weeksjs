@@ -11,8 +11,26 @@ const validateForm = (e) => {
   let emailVal = emailEl.value;
   let passwordVal = passwordEl.value;
 
-  console.log(`VALS: `, phoneVal, emailVal, passwordVal);
+  // Email check
+  const emailRegEx = /^[a-zA-Z0-9-_.]+@[a-z0-9]+\.[a-z]{2,6}$/;
+
+  console.log(emailRegEx.test(emailVal));
+
+  if (!emailRegEx.test(emailVal)) {
+    alert('Email nie jest poprawny!');
+    return;
+  }
 };
 
 // formBtn.addEventListener('submit', validateForm);
 form.addEventListener('submit', validateForm);
+
+// Ściąga:
+// ==================>
+//  // => w tych nawiasach zapisujemy wzór regex
+// ^ oznacza początek stringa do sprawdzenia
+// $ oznacza koniec sprawdzanego stringa
+//  [] grupa np liter czy cyfr
+// + za nawiasem mówi o tym, że ma być np jedna litera lub więcej
+// \. mówi o tym, że ma być kropka
+// {} w tym nawiasie podajemy zakres ile ma być znaków
