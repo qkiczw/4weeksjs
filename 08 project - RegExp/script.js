@@ -14,11 +14,17 @@ const validateForm = (e) => {
   // Email check
   const emailRegEx = /^[a-zA-Z0-9-_.]+@[a-z0-9]+\.[a-z]{2,6}$/;
 
+  const phoneRegEx = /^(\d{3}\s){2}\d{3}$/;
+
   console.log(emailRegEx.test(emailVal));
+  console.log(phoneRegEx.test(phoneVal));
 
   if (!emailRegEx.test(emailVal)) {
     alert('Email nie jest poprawny!');
     return;
+  }
+  if (!phoneRegEx.test(phoneVal)) {
+    alert('Numer telefonu jest nieprawidłowy!');
   }
 };
 
@@ -30,7 +36,10 @@ form.addEventListener('submit', validateForm);
 //  // => w tych nawiasach zapisujemy wzór regex
 // ^ oznacza początek stringa do sprawdzenia
 // $ oznacza koniec sprawdzanego stringa
-//  [] grupa np liter czy cyfr
+// \d oznacza cyfrę od 0 do 9
+//  [] jeden albo więcej np liter lub cyfr lub znaków
 // + za nawiasem mówi o tym, że ma być np jedna litera lub więcej
 // \. mówi o tym, że ma być kropka
-// {} w tym nawiasie podajemy zakres ile ma być znaków
+// \. mówi o tym, że w tym miejscu ma być biała spacja(odstęp),
+// {} w tym nawiasie podajemy zakres ile ma być znaków (lub jedną cyfrę dającą konkretną liczbę powtórzeń)
+//
