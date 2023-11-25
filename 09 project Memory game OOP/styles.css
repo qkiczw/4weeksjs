@@ -1,0 +1,35 @@
+body {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  margin: 0;
+}
+
+.timer {
+  position: absolute;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+  top: 20px;
+  right: 30px;
+}
+
+.game-board {
+  width: 1240px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: auto;
+}
+
+.card {
+  width: 200px;
+  height: 200px;
+  background-color: gray;
+  cursor: pointer;
+  background-size: contain;
+}
+
+.revealed,
+.matched {
+  pointer-events: none;
+}
