@@ -42,3 +42,37 @@ class Card {
     this.element.classList.add('matched');
   }
 }
+
+class Game {
+  static revealedCards = [];
+  static matchedPairs = 0;
+  static startTime = null;
+  static interval = null;
+
+  static start(images) {
+    this.startTime = Date.now();
+    this.interval = setInterval(() => {
+      document.getElementById('time').textContent = (
+        Date.now() -
+        this.startTime / 1000
+      ).toFixed(2);
+    }, 100);
+
+    const board = document.querySelector('.game-board');
+    board.innerHTML = '';
+    const cards = images.concat(images).map((img) => new Card(img));
+    this.shuffle(cards).forEach((card) => board.appendChild(card.element));
+
+    setTimeout(() => {
+      cards.forEach((card) => card.hide());
+    }, 3000);
+  }
+
+  static shuffle(cards) {
+    for (let i = cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+    return cards;
+  }
+}
